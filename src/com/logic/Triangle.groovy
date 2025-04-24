@@ -44,7 +44,7 @@ class Triangle implements Serializable {
         def high = center + 1
         def rows = row
         for ( int h=high; h>=1; h--) {  
-            for ( int s=h; s<center; s++ ) {
+            for ( int s=h; s<=center; s++ ) {
                 steps.sh "echo -n \" \" >> ${fileName}"
             }
             for ( int r=1; r<=rows; r++ ) {
@@ -61,7 +61,7 @@ class Triangle implements Serializable {
         def high = center + 1
         def rows = row
         for ( int h=high; h>=1; h--) {  
-            for ( int s=h; s<=center; s++ ) {
+            for ( int s=h; s<center; s++ ) {
                 steps.sh "echo -n \" \" >> ${fileName}"
             }
             for ( int r=1; r<=rows; r++ ) {
