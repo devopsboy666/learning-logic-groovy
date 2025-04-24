@@ -57,11 +57,11 @@ class Triangle implements Serializable {
     }
 
     def invertedDiamond(String fileName, int row) {
-        def center = ( row / 2 )
-        def high = center + 1
+        def center = ( this.number / 2 )
+        def high = center
         def rows = row
         for ( int h=high; h>=1; h--) {  
-            for ( int s=h; s<center-2; s++ ) {
+            for ( int s=h; s<=center; s++ ) {
                 steps.sh "echo -n \" \" >> ${fileName}"
             }
             for ( int r=1; r<=rows; r++ ) {
