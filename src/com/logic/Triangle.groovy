@@ -36,13 +36,13 @@ class Triangle implements Serializable {
     def invertedTriangle() {
         def fileName = "inverted.txt"
         steps.sh "touch inverted.txt"
-        this.invertedLogic(fileName)
+        this.invertedLogic(fileName, this.number)
     }
 
-    def invertedLogic(String fileName) {
+    def invertedLogic(String fileName, int row) {
         def center = ( this.number / 2 )
         def high = center + 1
-        def rows = this.number
+        def rows = row
         for ( int h=high; h>=1; h--) {  
             for ( int s=h; s<=center; s++ ) {
                 steps.sh "echo -n \" \" >> ${fileName}"
