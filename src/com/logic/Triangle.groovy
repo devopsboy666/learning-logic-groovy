@@ -12,7 +12,7 @@ class Triangle implements Serializable {
 
     def createTriangle() {       
         def fileName = "triangle.txt"
-        steps.sh "touch triangle.txt"
+        steps.sh "touch ${fileName}"
         this.triangleLogic(fileName)
     }
 
@@ -35,7 +35,7 @@ class Triangle implements Serializable {
 
     def invertedTriangle() {
         def fileName = "inverted.txt"
-        steps.sh "touch inverted.txt"
+        steps.sh "touch ${fileName}"
         this.invertedLogic(fileName, this.number)
     }
 
@@ -54,5 +54,12 @@ class Triangle implements Serializable {
             steps.sh "echo >> ${fileName}"    
         }
         steps.sh "cat ${fileName}"
+    }
+
+    def createDiamond() {
+        def fileName = "diamond.txt"
+        steps.sh "touch ${fileName}"
+        this.triangleLogic(fileName)
+        this.invertedLogic(fileName, this.number - 2)
     }
 }
