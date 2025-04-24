@@ -10,27 +10,49 @@ class Triangle implements Serializable {
         this.number = args.number
     }
 
-    def createTriangle() {
+    def createTriangle() {       
+        def fileName = "triangle.txt"
+        steps.sh "touch triangle.txt"
+        this.triangleLogic(fileName)
+    }
+
+    def triangleLogic(String fileName) {
         def center = ( this.number / 2 )
         def high = center + 1
         def rows = 1
-        
-        steps.sh "touch triangle.txt"
-
-        for ( int h=1; h<=high; h++) {
-            
-            for (int s=h; s<=center; s++) {
-                steps.sh "echo -n \" \" >> triangle.txt"
+        for ( int h=1; h<=high; h++) {  
+            for ( int s=h; s<=center; s++ ) {
+                steps.sh "echo -n \" \" >> ${fileName}"
             }
-            
-            for (int r=1; r<=rows; r++) {
-                steps.sh "echo -n '*' >> triangle.txt"
+            for ( int r=1; r<=rows; r++ ) {
+                steps.sh "echo -n '*' >> ${fileName}"
             }
-            
             rows = rows + 2
-            steps.sh "echo >> triangle.txt"
+            steps.sh "echo >> ${fileName}"
         }
+        steps.sh "cat ${fileName}"
+    }
 
-        steps.sh "cat triangle.txt"
+    def invertedTriangle() {
+        def fileName = "inverted.txt"
+        steps.sh "touch inverted.txt"
+        this.invertedLogic(fileName)
+    }
+
+    def invertedLogic(String fileName) {
+        def center = ( this.number / 2 )
+        def high = center + 1
+        def rows = 1
+        for ( int h=1; h<=high; h++) {  
+            for ( int s=h; s>=center; s++ ) {
+                steps.sh "echo -n \" \" >> ${fileName}"
+            }
+            for ( int r=1; r<=rows; r++ ) {
+                steps.sh "echo -n '*' >> ${fileName}"
+            }
+            rows = rows + 2
+            steps.sh "echo >> ${fileName}"
+        }
+        steps.sh "cat ${fileName}"
     }
 }
