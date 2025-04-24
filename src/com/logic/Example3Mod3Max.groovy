@@ -4,7 +4,7 @@ class Example3Mod3Max implements Serializable {
 
     def steps
     def numList
-    def resultList
+    def resultList = []
 
     Example3Mod3Max(Map args) {
         this.steps = args.steps
