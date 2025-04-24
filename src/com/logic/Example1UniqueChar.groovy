@@ -9,7 +9,7 @@ class Example1UniqueChar implements Serializable {
         this.message = args.message
     }
 
-    showString() {
-        return this.message[0]
+    def showString() {
+        steps.sh "echo ${this.message[0]}"
     }
 }
