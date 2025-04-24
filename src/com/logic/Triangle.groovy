@@ -36,12 +36,29 @@ class Triangle implements Serializable {
     def invertedTriangle() {
         def fileName = "inverted.txt"
         steps.sh "touch ${fileName}"
-        this.invertedLogic(fileName, this.number, false)
+        this.invertedLogic(fileName, this.number)
     }
 
-    def invertedLogic(String fileName, int row, boolean diamond) {
+    def invertedLogic(String fileName, int row) {
         def center = ( row / 2 )
-        def high = diamond ? center : center + 1
+        def high = center + 1
+        def rows = row
+        for ( int h=high; h>=1; h--) {  
+            for ( int s=h; s<center; s++ ) {
+                steps.sh "echo -n \" \" >> ${fileName}"
+            }
+            for ( int r=1; r<=rows; r++ ) {
+                steps.sh "echo -n '*' >> ${fileName}"
+            }
+            rows = rows - 2
+            steps.sh "echo >> ${fileName}"    
+        }
+        steps.sh "cat ${fileName}"
+    }
+
+    def invertedDiamond(String fileName, int row) {
+        def center = ( row / 2 )
+        def high = center + 1
         def rows = row
         for ( int h=high; h>=1; h--) {  
             for ( int s=h; s<=center; s++ ) {
@@ -60,6 +77,6 @@ class Triangle implements Serializable {
         def fileName = "diamond.txt"
         steps.sh "touch ${fileName}"
         this.triangleLogic(fileName)
-        this.invertedLogic(fileName, this.number, true)
+        this.invertedDiamond(fileName, this.number - 2)
     }
 }
