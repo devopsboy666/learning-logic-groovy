@@ -13,7 +13,7 @@ class Example1UniqueChar implements Serializable {
         for ( int i=0; i < this.message.length(); i++ ) {
             steps.sh "echo=============================================================="
             steps.sh "echo Check index ${i} Charactor is ${this.message[i]}"
-            for ( int j=i+1; j < this.message.length()-i; j++ ) {
+            for ( int j=i+1; j < this.message.length(); j++ ) {
                 steps.sh "echo Show length index j ${this.message.length()-i}"
                 steps.sh "echo Check index ${j} Charactor is ${this.message[j]}"
                 if ( this.message[i] == this.message[j] ) {
