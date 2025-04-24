@@ -9,6 +9,18 @@ class Example1UniqueChar implements Serializable {
         this.message = args.message
     }
 
+    boolean fineUnique() {
+        for ( int i=0; i < this.message.length(); i++ ) {
+            for ( int j=i+1; j < this.message.length()-i; j++ ) {
+                if ( this.message[i] == this.message[j] ) {
+                    return false
+                }
+            }
+        }
+
+        return true
+    }
+
     def showString() {
         steps.sh "echo ${this.message[0]}"
     }
