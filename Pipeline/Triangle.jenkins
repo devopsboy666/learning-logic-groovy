@@ -1,0 +1,41 @@
+@Library('learning-logic') _
+// import class
+import com.logic.ShareVariable
+import com.logic.OddNumber
+import com.logic.Triangle
+
+def database = new ShareVariable([steps: this])
+
+pipeline {
+
+    parameters { 
+        string(name: 'NUM', defaultValue: '3', description: 'Enter Odd Number Only')
+    }
+
+    agent { label 'k8s' }
+
+    stages {
+        stage('Check Odd Number'){
+            steps {
+                script {
+                    def oddNum = new OddNumber([steps: this, number: params.NUM])
+                    def isTrue = oddNum.isOddNumber()
+                    if ( isTrue ) {
+                        database.setNumber(oddNum.getOddNumber())
+                    } else {
+                        error("Number is not Odd")
+                    }
+                }
+            }
+        }
+
+        stage('Create Triangle') {
+            steps {
+                script {
+                    def triangle = new Triangle([steps: this, number: database.getNumber()])
+                    triangle.createTriangle()
+                }
+            }
+        }
+    }
+}

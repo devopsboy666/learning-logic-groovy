@@ -16,11 +16,17 @@ class OddNumber implements Serializable {
         } 
     }
 
-    def isOddNumber() {
+    boolean isOddNumber() {
         if( this.number % 2 == 1) {
             steps.sh "echo Number ${this.number} is Odd Number"
+            return true
         } else {
             error("Number much be Odd Number")
+            return false
         }
+    }
+
+    int getOddNumber() {
+        return this.number
     }
 }
