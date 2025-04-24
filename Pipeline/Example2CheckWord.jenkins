@@ -1,0 +1,20 @@
+@Library('learning-logic') _
+import com.logic.Example2CheckWorkd
+
+pipeline {
+    parameters { 
+        string(name: 'WORD', defaultValue: 'Hello TTB', description: 'Word Count')
+    }
+    agent { label 'k8s' }
+    stages {
+        stage('Word Count'){
+            steps {
+                script {
+                    def exam2 = new Example2CheckWorkd([steps: this, words: params.WORD])
+                    exam2.countWord()
+                    // exam1.showString()
+                }
+            }
+        }
+    }
+}

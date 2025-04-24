@@ -1,0 +1,21 @@
+@Library('learning-logic') _
+import com.logic.Example1UniqueChar
+
+pipeline {
+    parameters { 
+        string(name: 'MESSAGE', defaultValue: 'Hello', description: 'message to fine unique')
+    }
+    agent { label 'k8s' }
+    stages {
+        stage('Example 1'){
+            steps {
+                script {
+                    def exam1 = new Example1UniqueChar([steps: this, message: params.MESSAGE])
+                    env.RESULT = exam1.fineUnique()
+                    echo "${env.RESULT}"
+                    // exam1.showString()
+                }
+            }
+        }
+    }
+}
