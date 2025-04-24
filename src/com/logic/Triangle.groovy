@@ -40,7 +40,7 @@ class Triangle implements Serializable {
     }
 
     def invertedLogic(String fileName, int row, boolean diamond) {
-        def center = ( this.numbe / 2 )
+        def center = ( row / 2 )
         def high = diamond ? center : center + 1
         def rows = row
         for ( int h=high; h>=1; h--) {  
@@ -60,6 +60,6 @@ class Triangle implements Serializable {
         def fileName = "diamond.txt"
         steps.sh "touch ${fileName}"
         this.triangleLogic(fileName)
-        this.invertedLogic(fileName, this.number - 2, true)
+        this.invertedLogic(fileName, this.number, true)
     }
 }
