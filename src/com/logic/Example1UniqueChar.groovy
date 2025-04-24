@@ -12,7 +12,7 @@ class Example1UniqueChar implements Serializable {
     boolean fineUnique() {
         for ( int i=0; i < this.message.length(); i++ ) {
             for ( int j=i+1; j < this.message.length()-i; j++ ) {
-                steps.sh "echo ${i} ${this.message[i]} --> ${j} ${this.message[j]}"
+                steps.sh "echo ${i} ${this.message[i]} = ${j} ${this.message[j]}"
                 if ( this.message[i] == this.message[j] ) {
                     return false
                 }
