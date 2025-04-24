@@ -24,5 +24,6 @@ class Example1UniqueChar implements Serializable {
 
     def showString() {
         steps.sh "echo ${this.message[0]}"
+        steps.sh "echo ${this.message.length()}"
     }
 }
