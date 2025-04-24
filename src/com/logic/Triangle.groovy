@@ -20,7 +20,7 @@ class Triangle implements Serializable {
         for ( int h=1; h<=high; h++) {
             
             for (int s=1; s<=center; s++) {
-                steps.sh "echo -n ' ' >> triangle.txt"
+                steps.sh "echo -n " " >> triangle.txt"
             }
             
             for (int r=1; r<=rows; r++) {
