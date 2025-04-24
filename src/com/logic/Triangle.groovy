@@ -40,7 +40,7 @@ class Triangle implements Serializable {
     }
 
     def invertedLogic(String fileName, int row, boolean diamond) {
-        def center = ( row / 2 )
+        def center = ( this.numbe / 2 )
         def high = diamond ? center : center + 1
         def rows = row
         for ( int h=high; h>=1; h--) {  
