@@ -42,16 +42,16 @@ class Triangle implements Serializable {
     def invertedLogic(String fileName) {
         def center = ( this.number / 2 )
         def high = center + 1
-        def rows = 1
-        for ( int h=1; h<=high; h++) {  
-            for ( int s=h; s>=center; s++ ) {
+        def rows = this.number
+        for ( int h=high; h>=1; h--) {  
+            for ( int s=h; s<=center; s++ ) {
                 steps.sh "echo -n \" \" >> ${fileName}"
             }
             for ( int r=1; r<=rows; r++ ) {
                 steps.sh "echo -n '*' >> ${fileName}"
             }
-            rows = rows + 2
-            steps.sh "echo >> ${fileName}"
+            rows = rows - 2
+            steps.sh "echo >> ${fileName}"    
         }
         steps.sh "cat ${fileName}"
     }
