@@ -1,0 +1,31 @@
+@Library('learning-logic') _
+
+// import class
+import com.logic.ExampleWordCounter
+
+
+pipeline {
+
+    parameters { 
+        string(name: 'MESSAGE', defaultValue: 'Hello TATA Hello', description: 'Enter you message')
+    }
+
+    agent { label 'k8s' }
+
+    stages {
+        stage('Count Word'){
+            steps {
+                script {
+                    def countWord = new ExampleWordCounter([steps: this, message: params.MESSAGE])
+                    countWord.countDuplicateWords()
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
