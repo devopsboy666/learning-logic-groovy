@@ -22,7 +22,7 @@ class ExampleWordCounter implements Serializable {
         for (int i=0; i<length; i++) {
             count = 0
             for (int j=i+1; j<length; j++) {
-                if (arr_mess[i] == args[j]) {
+                if (arr_mess[i] == arr_mess[j]) {
                     count = count + 1
                 }
             }
