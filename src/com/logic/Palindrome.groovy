@@ -20,7 +20,7 @@ class Palindrome implements Serializable {
         for (int i=end; i<=0; i--) { 
             swap = swap + this.message[i]
         }
-
+        steps.sh "echo swap is ${swap}"
         if (swap == this.message) {
             return true
         }
