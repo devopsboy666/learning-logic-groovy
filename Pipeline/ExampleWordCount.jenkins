@@ -7,7 +7,7 @@ import com.logic.ExampleWordCounter
 pipeline {
 
     parameters { 
-        string(name: 'MESSAGE', defaultValue: 'Hello TATA Hello', description: 'Enter you message')
+        string(name: 'MESSAGE', defaultValue: 'The quick brown fox jumps over the lazy dog and the quick dog sleeps', description: 'Enter you message')
     }
 
     agent { label 'k8s' }
