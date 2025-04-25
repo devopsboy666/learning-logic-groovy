@@ -18,7 +18,7 @@ class Palindrome implements Serializable {
         def end = this.message.length() - 1
         def swap = ""
         steps.sh "echo end = ${end}"
-        for (int i=end; i<=0; i--) { 
+        for (int i=end; i>=0; i--) { 
             steps.sh "echo this.message[i] is ${this.message[i]}"    
             swap = swap + this.message[i]
         }
