@@ -1,0 +1,31 @@
+@Library('learning-logic') _
+
+// import class
+import com.logic.Palindrome
+
+
+pipeline {
+
+    parameters { 
+        string(name: 'MESSAGE', defaultValue: 'aba', description: 'Enter message to check is Palindrome')
+    }
+
+    agent { label 'k8s' }
+
+    stages {
+        stage('Check Palindrome'){
+            steps {
+                script {
+                    def palin = new Palindrome([steps: this, message: params.MESSAGE])
+                    palin.checkPalindrome()
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

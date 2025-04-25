@@ -28,7 +28,7 @@ class Palindrome implements Serializable {
         return false
     }
 
-    checkPalindrome() {
+    def checkPalindrome() {
         def isTrue = this.swapMessage()
         if (isTrue) {
             steps.sh "echo The message ${this.message} is Palindrome"
