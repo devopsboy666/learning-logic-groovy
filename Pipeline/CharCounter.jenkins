@@ -2,15 +2,19 @@
 
 import com.logic.CharCounter
 
-def charCou = new CharCounter([steps: this, texts: "Hello World"])
-
 pipeline {
+    
+    parameters { 
+        string(name: 'TEXT', defaultValue: 'Hello World', description: 'Enter your text')
+    }
+
     agent { label 'k8s' }
 
     stages {
         stage("Count Char") {
             steps {
                 script {
+                    def charCou = new CharCounter([steps: this, texts: params.TEXT])
                     charCou.countDuplicateChars()
                 }
             }
