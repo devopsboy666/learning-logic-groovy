@@ -14,6 +14,9 @@ class CharCounter implements Serializable {
         def t = this.texts
         def charMap = [:]
         t.each { c -> 
+            if (c == " ") {
+                continue
+            }
             charMap[c] = (charMap[c] ?: 0) + 1
         }
         steps.sh "touch char.txt"
