@@ -12,7 +12,7 @@ class MinToMax implements Serializable {
 
     def sortNumbers() {
         def tmp
-        def length = this.numbers.size()
+        def length = this.numbers.length()
         for (int i=0; i<length; i++) {
             for (int j=i; j<0; j--) {
                 if (this.numbers[j] < this.numbers[j-1]) {
