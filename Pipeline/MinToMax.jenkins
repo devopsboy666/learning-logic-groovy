@@ -3,7 +3,7 @@
 // import class
 import com.logic.MinToMax
 
-def minMax = new MinToMax([this: this, numbers: [12, 87, 34, 56, 2, 77, 45, 98, 21, 1, 65, 0, 8, 99, 73, 5, 28, 49, 83, 11]])
+def minMax = new MinToMax([steps: this, numbers: [12, 87, 34, 56, 2, 77, 45, 98, 21, 1, 65, 0, 8, 99, 73, 5, 28, 49, 83, 11]])
 
 pipeline {
 
