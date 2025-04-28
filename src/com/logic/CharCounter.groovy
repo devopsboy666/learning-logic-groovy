@@ -16,10 +16,11 @@ class CharCounter implements Serializable {
         t.each { c -> 
             charMap[c] = (charMap[c] ?: 0) + 1
         }
-
+        steps.sh "touch char.txt"
         charMap.each { k, v ->
-            steps.sh "echo ${k} = ${v}"
+            steps.sh "echo ${k} = ${v} >> char.txt"
         }
+        steps.sh "cat char.txt"
     }
 
 }
