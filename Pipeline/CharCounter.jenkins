@@ -1,0 +1,25 @@
+@Library('learning-logic') _
+
+import com.logic.CharCounter
+
+def charCou = new CharCounter([steps: this, texts: "Hello World"])
+
+pipeline {
+    agent { label 'k8s' }
+
+    stages {
+        stage("Count Char") {
+            steps {
+                script {
+                    charCou.countDuplicateChars()
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
