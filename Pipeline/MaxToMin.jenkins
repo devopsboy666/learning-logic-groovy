@@ -1,0 +1,27 @@
+@Library('learning-logic') _
+
+// import class
+import com.logic.MaxToMin
+
+def maxMin = new MaxToMin([steps: this, numbers: [12, 87, 34, 56, 2, 77, 45, 98, 21, 1, 65, 0, 8, 99, 73, 5, 28, 49, 83, 11]])
+
+pipeline {
+
+    agent { label 'k8s' }
+
+    stages {
+        stage('Max to Min'){
+            steps {
+                script {
+                    maxMin.sortNumbers()
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
