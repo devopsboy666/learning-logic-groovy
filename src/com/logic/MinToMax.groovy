@@ -22,5 +22,6 @@ class MinToMax implements Serializable {
                 }
             }
         }
+        steps.sh "echo Sort = ${this.numbers}"
     }
 }
