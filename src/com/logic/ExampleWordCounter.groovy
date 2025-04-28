@@ -23,11 +23,14 @@ class ExampleWordCounter implements Serializable {
             count = 0
             for (int j=i+1; j<length; j++) {
                 if (arr_mess[i] == arr_mess[j]) {
+                    steps.sh "echo arr_mess i = ${arr_mess[i]}"
+                    steps.sh "echo arr_mess j = ${arr_mess[j]}"
                     count = count + 1
                 }
             }
             map_count["word"] = arr_mess[i]
             map_count["count"] = count
+            steps.sh "echo This Map ${map_count["word"]} = ${map_count["count"]}"
             arr_count << map_count
         } 
 
