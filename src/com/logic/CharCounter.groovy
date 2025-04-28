@@ -15,7 +15,7 @@ class CharCounter implements Serializable {
         def charMap = [:]
         t.each { c -> 
             if (c == " ") {
-                continue
+                c = "space"
             }
             charMap[c] = (charMap[c] ?: 0) + 1
         }
