@@ -28,12 +28,11 @@ class ScanHardCode implements Serializable {
                 }
             }
         }
-        def err_message = '''\
-        ========================================================
-        ❌ Hard-coded values detected:
-        ${violations.join('\n')}
-        ========================================================
-        '''
+        def err_message = "========================================================\n" +
+                "❌ Hard-coded values detected:\n" +
+                violations.join('\n') + "\n" +
+                "========================================================"
+
         if (violations) {
             steps.error(err_message)
         } else {
