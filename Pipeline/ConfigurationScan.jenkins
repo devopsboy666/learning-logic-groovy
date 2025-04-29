@@ -2,7 +2,7 @@
 
 import com.logic.ConfigurationScan
 
-def configScan = new ConfigurationScan([steps: this, plugins: ['test','superscan']])
+def configScan = new ConfigurationScan([steps: this, plugins: ['test']])
 
 pipeline {
     
