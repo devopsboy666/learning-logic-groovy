@@ -11,6 +11,7 @@ class ScanHardCode implements Serializable {
         ~/endpoint\s*:\s*.+/
     ]
 
+
     ScanHardCode(Map args) {
         this.steps = args.steps
     }
@@ -28,9 +29,14 @@ class ScanHardCode implements Serializable {
                 }
             }
         }
-
+        def err_message = '''\
+        ========================================================
+        ❌ Hard-coded values detected:
+        ${violations.join('\n')}
+        ========================================================
+        '''
         if (violations) {
-            steps.error("❌ Hard-coded values detected:\n" + violations.join('\n'))
+            steps.error(err_message)
         } else {
             steps.echo "✅ No hard-coded values found."
         }
