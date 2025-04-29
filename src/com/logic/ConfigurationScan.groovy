@@ -28,7 +28,7 @@ class ConfigurationScan implements Serializable {
                 }
             }
         } catch (Exception e) {
-            error(e.message)
+            steps.error(e.message)
         }
     }
 
