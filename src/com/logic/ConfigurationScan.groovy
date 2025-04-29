@@ -28,7 +28,7 @@ class ConfigurationScan implements Serializable {
                 }
             }
         } catch (Exception e) {
-            steps.sh "echo Error ${e.message}"
+            error(e.message)
         }
     }
 
