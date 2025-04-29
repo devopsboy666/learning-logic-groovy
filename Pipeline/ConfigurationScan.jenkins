@@ -1,0 +1,26 @@
+@Library('learning-logic') _
+
+import com.logic.ConfigurationScan
+
+def configScan = new ConfigurationScan([steps: this, plugins: [test,superscan]])
+
+pipeline {
+    
+    agent { label 'k8s' }
+
+    stages {
+        stage("Count Char") {
+            steps {
+                script {
+                    configScan.scan()
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
