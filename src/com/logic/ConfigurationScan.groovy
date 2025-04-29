@@ -4,7 +4,7 @@ class ConfigurationScan implements Serializable {
 
     def steps
     def methodToCall = []
-    private static final Map<String, Closure> scanMethods = [:]
+    def scanMethods = [:]
 
     ConfigurationScan(Map args) {
         this.steps = args.steps
