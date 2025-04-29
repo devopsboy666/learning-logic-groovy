@@ -23,7 +23,7 @@ class ScanHardCode implements Serializable {
         content.split('\n').eachWithIndex { line, idx ->
             steps.sh "echo line ${line} idx ${idx}"
             hardcodePatterns.each { pattern ->
-                if (line ==~ pattern && !line.contains('${')) {
+                if ((line =~ pattern) && !line.contains('${')) {
                     violations << "Line ${idx + 1}: '${line.trim()}'"
                 }
             }
