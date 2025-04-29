@@ -4,6 +4,7 @@ class ConfigurationScan implements Serializable {
 
     def steps
     def methodToCall = []
+    private static final Map<String, Closure> scanMethods = [:]
 
     ConfigurationScan(Map args) {
         this.steps = args.steps
@@ -20,9 +21,10 @@ class ConfigurationScan implements Serializable {
 
     def scan() {
         try {
-            this.methodsToCall.each { methodName -> 
-                if (this.metaClass.respondsTo(this, methodName)) {
-                    this."${methodName}"()
+            this.methodToCall.each { methodName ->
+                def action = this.scanMethods[methodName]
+                if (action != null) {
+                    action.call()
                 } else {
                     throw new RuntimeException("Not Found Plugin ${methodName}")
                 }
