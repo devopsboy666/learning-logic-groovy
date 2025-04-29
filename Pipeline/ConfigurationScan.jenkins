@@ -9,7 +9,7 @@ pipeline {
     agent { label 'k8s' }
 
     stages {
-        stage("Count Char") {
+        stage("Config Scan") {
             steps {
                 script {
                     configScan.scan()
