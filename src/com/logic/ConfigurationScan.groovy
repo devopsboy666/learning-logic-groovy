@@ -11,11 +11,11 @@ class ConfigurationScan implements Serializable {
     }
 
     def test() {
-        steps.sh "echo Method test() doing...."
+        steps.sh "echo Method test doing...."
     }
 
     def superscan() {
-        steps.sh "echo superscan() doing..."
+        steps.sh "echo superscan doing..."
     }
 
     def scan() {
