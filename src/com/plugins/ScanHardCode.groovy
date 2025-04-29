@@ -22,7 +22,6 @@ class ScanHardCode implements Serializable {
         def content = steps.readFile(path)
 
         content.split('\n').eachWithIndex { line, idx ->
-            steps.sh "echo line ${line} idx ${idx}"
             hardcodePatterns.each { pattern ->
                 if ((line =~ pattern) && !line.contains('${')) {
                     violations << "Line ${idx + 1}: '${line.trim()}'"
