@@ -3,12 +3,13 @@ package com.logic
 class ConfigurationScan implements Serializable {
 
     def steps
-    def methodToCall = []
+    def plugins = []
     def scanMethods = [:]
 
     ConfigurationScan(Map args) {
         this.steps = args.steps
-        this.methodsToCall = args.plugins ?: []
+        this.plugins = args.plugins ?: []
+        steps.sh "echo ${plugins}"
     }
 
     def test() {
@@ -21,7 +22,7 @@ class ConfigurationScan implements Serializable {
 
     def scan() {
         try {
-            this.methodToCall.each { methodName ->
+            this.plugins.each { methodName ->
                 def action = this.scanMethods[methodName]
                 if (action != null) {
                     action.call()
