@@ -18,7 +18,7 @@ class ScanHardCode implements Serializable {
     def checkHardCode(String path) {
 
         def violations = [] 
-        def content = steps.readFile(filePath)
+        def content = steps.readFile(path)
 
         content.split('\n').eachWithIndex { line, idx ->
             hardcodePatterns.each { pattern ->
