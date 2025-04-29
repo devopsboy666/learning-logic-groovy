@@ -7,7 +7,7 @@ class ConfigurationScan implements Serializable {
 
     ConfigurationScan(Map args) {
         this.steps = args.steps
-        this.plugins = args.plugins ?: []
+        this.plugins = args.plugins ?: ['test']
         steps.sh "echo ${plugins}"
     }
 
