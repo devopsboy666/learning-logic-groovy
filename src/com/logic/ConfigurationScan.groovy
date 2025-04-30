@@ -11,7 +11,7 @@ class ConfigurationScan implements Serializable {
     ConfigurationScan(Map args) {
         this.steps = args.steps
         this.plugins = args.plugins ?: []
-        this.scanCode = new ScanHardCode([steps: this])
+        this.scanCode = new ScanHardCode([steps: args.steps])
     }
 
     def test() {
