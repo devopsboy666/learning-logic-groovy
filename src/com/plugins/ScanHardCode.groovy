@@ -36,7 +36,7 @@ class ScanHardCode implements Serializable {
             if (violations) {
                 throw new RuntimeException("${err_message}")
             } else {
-                steps.echo "✅ No hard-coded values found."
+                steps.echo "✅ No hard-coded values found. ✅"
             }
         } catch (Exception e) {
             steps.error(e.message)
