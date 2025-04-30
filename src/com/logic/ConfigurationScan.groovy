@@ -34,7 +34,7 @@ class ConfigurationScan implements Serializable {
         // } catch (Exception e) {
         //     steps.error(e.message)
         // }
-        this.scanCode."${methodName}"('/test/configMap.yaml')
+        scanCode."${methodName}"('/test/configMap.yaml')
     }
 
 }
