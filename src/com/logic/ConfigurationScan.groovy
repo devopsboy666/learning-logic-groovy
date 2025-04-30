@@ -1,13 +1,17 @@
 package com.logic
 
+import com.plugins.ScanHardCode
+
 class ConfigurationScan implements Serializable {
 
     def steps
     def plugins = []
+    ScanHardCode scanCode
 
     ConfigurationScan(Map args) {
         this.steps = args.steps
         this.plugins = args.plugins ?: []
+        this.scanCode = new ScanHardCode([steps: this])
     }
 
     def test() {
@@ -22,7 +26,7 @@ class ConfigurationScan implements Serializable {
         try {
             this.plugins.each { methodName -> 
                 if (this.metaClass.respondsTo(this, methodName)) {
-                    this."${methodName}"()
+                    this.scanCode."${methodName}"('/test/configMap.yaml')
                 } else {
                     throw new RuntimeException("No Plugin ${methodName}")
                 }
