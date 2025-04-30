@@ -32,11 +32,14 @@ class ScanHardCode implements Serializable {
                 "❌ Hard-coded values detected:\n" +
                 violations.join('\n') + "\n" +
                 "==============================================================="
-
-        if (violations) {
-            steps.error(err_message)
-        } else {
-            steps.echo "✅ No hard-coded values found."
+        try {
+            if (violations) {
+                throw new RuntimeException("${err_message}")
+            } else {
+                steps.echo "✅ No hard-coded values found."
+            }
+        } catch (Exception e) {
+            steps.error(e.message)
         }
 
     }
