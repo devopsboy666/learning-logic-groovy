@@ -23,17 +23,18 @@ class ConfigurationScan implements Serializable {
     }
 
     def scan() {
-        try {
-            this.plugins.each { methodName -> 
-                if (this.metaClass.respondsTo(this, methodName)) {
-                    this.scanCode."${methodName}"('/test/configMap.yaml')
-                } else {
-                    throw new RuntimeException("No Plugin ${methodName}")
-                }
-            }
-        } catch (Exception e) {
-            steps.error(e.message)
-        }
+        // try {
+        //     this.plugins.each { methodName -> 
+        //         if (this.metaClass.respondsTo(this, methodName)) {
+        //             this.scanCode."${methodName}"('/test/configMap.yaml')
+        //         } else {
+        //             throw new RuntimeException("No Plugin ${methodName}")
+        //         }
+        //     }
+        // } catch (Exception e) {
+        //     steps.error(e.message)
+        // }
+        this.scanCode."${methodName}"('/test/configMap.yaml')
     }
 
 }
